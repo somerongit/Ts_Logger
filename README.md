@@ -12,6 +12,7 @@ You can set debug mode false by passing false as a second parameter
    const logger: Logger = new Logger(__filename,false)
 */
 
+logger.info("Your log message or object","Log title")
 logger.info("Information", "printInfo")
 logger.info(["Abc"], "printInfo")
 
