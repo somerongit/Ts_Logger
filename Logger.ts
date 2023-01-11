@@ -1,5 +1,5 @@
 class Logger {
-    readonly project_folder_name: string = "Logger"
+    readonly project_folder_name: string = "app_server"
     readonly file_path: string
     readonly debug_mode: boolean
 
@@ -9,7 +9,7 @@ class Logger {
         this.debug_mode = debug
     }
 
-    info(msg: any, func_name: string = null) {
+    info(msg: any, func_name: string|null = null) {
         let time = new Date().toUTCString()
         let log = func_name ? (time + " Info: " + this.file_path + " : " + func_name) : (time + " Info: " + this.file_path)
 
@@ -23,7 +23,7 @@ class Logger {
 
     }
 
-    debug(msg: any, func_name: string = null) {
+    debug(msg: any, func_name: string|null = null) {
 
         if (!this.debug_mode) return
 
@@ -40,7 +40,7 @@ class Logger {
 
     }
 
-    error(msg: any, func_name: string = null, payload: any = null, payload_title: string = null) {
+    error(msg: any, func_name: string|null = null, payload: any = null, payload_title: string|null = null) {
 
         let time = new Date().toUTCString()
         let log = func_name ? (time + " Error: " + this.file_path + " : " + func_name) : (time + " Error: " + this.file_path)
