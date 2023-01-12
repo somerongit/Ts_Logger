@@ -1,5 +1,5 @@
 class Logger {
-    readonly project_folder_name: string = "app_server"
+    readonly project_folder_name: string = "Logger"
     readonly file_path: string
     readonly debug_mode: boolean
 
