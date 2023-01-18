@@ -9,54 +9,19 @@ class Logger {
         this.debug_mode = debug
     }
 
-    info(msg: any, func_name: string|null = null) {
-        let time = new Date().toUTCString()
-        let log = func_name ? (time + " Info: " + this.file_path + " : " + func_name) : (time + " Info: " + this.file_path)
-
-        if (msg instanceof Object) {
-            console.log(log, " => ")
-            console.log(msg)
-        } else {
-            console.log(log, " => ", msg)
-        }
+    private log(log_level: string, msg: any, msg_title: any | null = null) {
+        const time = new Date()
+        const formatter = new Intl.DateTimeFormat("en-In", { dateStyle: "medium", timeStyle: "medium", hour12: false })
+        let log = formatter.format(time) + " " + log_level + ": " + this.file_path
+        console.log(log, msg_title ? msg_title : "", " => ", msg)
         console.log();
-
     }
 
-    debug(msg: any, func_name: string|null = null) {
-
+    info(msg: any, msg_title: any | null = null) { this.log("Info", msg, msg_title) }
+    error(msg: any, msg_title: any | null = null) { this.log("Error", msg, msg_title) }
+    debug(msg: any, msg_title: any | null = null) {
         if (!this.debug_mode) return
-
-        let time = new Date().toUTCString()
-        let log = func_name ? (time + " Debug: " + this.file_path + " : " + func_name) : (time + " Debug: " + this.file_path)
-
-        if (msg instanceof Object) {
-            console.log(log, " => ")
-            console.log(msg)
-        } else {
-            console.log(log, " => ", msg)
-        }
-        console.log();
-
-    }
-
-    error(msg: any, func_name: string|null = null, payload: any = null, payload_title: string|null = null) {
-
-        let time = new Date().toUTCString()
-        let log = func_name ? (time + " Error: " + this.file_path + " : " + func_name) : (time + " Error: " + this.file_path)
-
-        if (msg instanceof Object) {
-            console.log(log, " => ")
-            console.log(msg)
-        } else {
-            console.log(log, " => ", msg)
-        }
-        if (payload_title) {
-            console.log(payload_title);
-            console.log(payload);
-        }
-        console.log();
-
+        this.log("Debug", msg, msg_title)
     }
 }
 export default Logger
