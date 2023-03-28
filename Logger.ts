@@ -11,12 +11,13 @@ class Logger {
     }
 
     private log(log_level: string, msg_title: any, msg: any | null = null) {
+        if (log_level == "Debug") if (!this.debug_mode) return
+
         const time = new Date()
-        let log = log_level + " " + this.formatter.format(time) + ": " + this.file_path
         if (msg) {
-            console.log(log, msg_title, " => ", msg, "\n")
+            console.log(log_level, this.formatter.format(time), this.file_path, msg_title, " => ", msg, "\n")
         } else {
-            console.log(log, " => ", msg_title, "\n")
+            console.log(log_level, this.formatter.format(time), this.file_path, " => ", msg_title, "\n")
         }
     }
 

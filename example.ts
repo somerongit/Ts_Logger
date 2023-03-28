@@ -8,11 +8,22 @@ You can set debug mode false by passing false as a second parameter
 */
 
 logger.info("Information", "printInfo")
-logger.info(["Abc"], "printInfo")
+// Info 28-Mar-2023, 15:16:23 \src\controller.ts Information => printInfo
+logger.info("Information")
+// Info 28-Mar-2023, 15:16:23 \src\controller.ts => Information
+logger.info("Title", ["Abc"])
+// Info 28-Mar-2023, 15:16:23 \src\controller.ts Title => ["Abc"]
 
-logger.debug("Debug Information", "printDebug")
-logger.debug(["Abc"], "printDebug")
+logger.debug("Information", "printInfo")
+// Debug 28-Mar-2023, 15:16:23 \src\controller.ts Information => printInfo
+logger.debug("Information")
+// Debug 28-Mar-2023, 15:16:23 \src\controller.ts => Information
+logger.debug("Title", ["Abc"])
+// Debug 28-Mar-2023, 15:16:23 \src\controller.ts Title => ["Abc"]
 
-logger.error("Error Information", "printError")
-logger.error(["Abc"], "printError")
-logger.error("Error: Type Error...", "printError", [{ "d": "4" }, { "e": "5" }], "Input Payload:")
+logger.error("Information", "printInfo")
+// Error 28-Mar-2023, 15:16:23 \src\controller.ts Information => printInfo
+logger.error("Information")
+// Error 28-Mar-2023, 15:16:23 \src\controller.ts => Information
+logger.error("Title", ["Abc"])
+// Error 28-Mar-2023, 15:16:23 \src\controller.ts Title => ["Abc"]
