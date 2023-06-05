@@ -1,11 +1,13 @@
 class Logger {
     readonly file_path: string
     readonly debug_mode: boolean
+    readonly show_file_path: boolean
     private formatter: any = new Intl.DateTimeFormat("en-In", { dateStyle: "medium", timeStyle: "medium", hour12: false })
 
     constructor(path: string, debug: boolean = true) {
-        this.file_path = path.replace(`${process.cwd()}\\`, "")
+        this.file_path = debug == true ? path.replace(`${process.cwd()}\\`, "") : ""
         this.debug_mode = debug
+        this.show_file_path = debug
     }
 
     private log(log_level: string, msg_title: any, msg: any | null = -Infinity) {
@@ -13,9 +15,9 @@ class Logger {
 
         const time = new Date()
         if (msg == -Infinity) {
-            console.log(log_level, this.formatter.format(time), this.file_path, " => ", msg_title, "\n")
+            console.log(`${log_level} ${this.formatter.format(time)} ${this.file_path}>`, msg_title, "\n")
         } else {
-            console.log(log_level, this.formatter.format(time), this.file_path, msg_title, " => ", msg, "\n")
+            console.log(`${log_level} ${this.formatter.format(time)} ${this.file_path} ${msg_title}>`, msg, "\n")
         }
     }
 
