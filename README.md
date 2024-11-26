@@ -3,6 +3,7 @@
 Example Code
 
 ```ts
+// For TypeScript
 import Logger from "./Logger";
 // Initializing Logger with file path 
 const logger: Logger = new Logger(__filename)
@@ -15,7 +16,18 @@ You can set debug mode false by passing false as a second parameter
 import Logger from "./Logger";
 // Initializing Logger with file path 
 const logger: Logger = new Logger(__filename)
+```
 
+```js
+// For JavaScript
+import Logger from './Logger.js'
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const logger = new Logger(__filename)
+```
+
+```ts
 /*
 You can set debug mode false by passing false as a second parameter
    const logger: Logger = new Logger(__filename,false)
